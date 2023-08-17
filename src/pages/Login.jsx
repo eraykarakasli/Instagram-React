@@ -11,7 +11,9 @@ function Login() {
                 <FormLogin />
 
             </div>
-            <div> <Footer /> </div>
+            <div>
+                <Footer />
+            </div>
 
         </div>
     )
