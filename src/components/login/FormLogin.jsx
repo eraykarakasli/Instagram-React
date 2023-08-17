@@ -8,9 +8,9 @@ function FormLogin() {
     const inputRef = useRef();
     const [type, setType] = useState('password')
     const [show, setShow] = useState(false);
-    var text1 = "Telefon numarası, kullanıcı adı veya e-posta";
-    var text2 = "Password";
-    var text = "text";
+    let text1 = "Telefon numarası, kullanıcı adı veya e-posta";
+    let text2 = "Password";
+    let text = "text";
 
     useEffect(() => {
         if (show) {
@@ -28,7 +28,7 @@ function FormLogin() {
 
                 <Formik
                     initialValues={{
-                        text: "",
+                        username: "",
                         password: "",
 
                     }}
@@ -36,7 +36,7 @@ function FormLogin() {
                     /* ///////// YUP VALIDATION //////// */
                     validationSchema={
                         Yup.object({
-                            email: Yup.string().required("E-posta adresinizi veya kullanıcı adınızı girin."),
+                            username: Yup.string().required("E-posta adresinizi veya kullanıcı adınızı girin."),
                             password: Yup.string().required("Şifrenizi girin."),
                         })}
 
@@ -51,28 +51,33 @@ function FormLogin() {
                     }}
                 >
 
-                    
+
                     {({ values, errors, handleSubmit, handleReset, handleChange, dirty, isSubmitting, touched }) => (
                         <form onSubmit={handleSubmit} className='gap-y-2 grid'>
 
-                            <Input id="text" type={text} message={text1} kurt={false} 
-                            value={values.text}
-                            onChange={handleChange}
+                            <Input
+                                id="username"
+                                type={text}
+                                message={text1}
+                                kurt={false}
+                                value={values.username}
+                                onChange={handleChange}
                             />
 
-                            <Input 
-                            id='password' 
-                            type={type} 
-                            show={show} 
-                            kurt={true} 
-                            inputRef={inputRef} 
-                            setShow={setShow} 
-                            message={text2} 
-                            value={values.password}
-                            onChange={handleChange}
+                            <Input
+                                id='password'
+                                type={type}
+                                show={show}
+                                kurt={true}
+                                inputRef={inputRef}
+                                setShow={setShow}
+                                message={text2}
+
+                                onChange={handleChange}
+                                value={values.password}
                             />
 
-                        
+
 
                             <button
                                 className='bg-brand text-white rounded-md h-8 mt-2  font-semibold hover:bg-blue-500'
